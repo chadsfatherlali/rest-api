@@ -36,6 +36,17 @@ const usersRoutes = (models) => {
     }
   })
 
+  users.delete('/users/:id', async (req, res) => {
+    try {
+      const result = await models.Users
+        .deleteOne({ _id: req.params.id })
+
+      res.json(result)
+    } catch (error) {
+      res.status(400).json(error)
+    }
+  })
+
   return users
 }
 export default usersRoutes
