@@ -8,7 +8,11 @@ exports["default"] = void 0;
 var _mongoose = require("mongoose");
 
 var userSchema = new _mongoose.Schema({
-  name: String
+  name: String,
+  lastName: String,
+  email: String,
+  phoneNumber: String,
+  cc: Number
 });
 var Users = (0, _mongoose.model)('Users', userSchema);
 var _default = Users;

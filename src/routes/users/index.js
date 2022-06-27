@@ -7,6 +7,19 @@ const usersRoutes = (models) => {
     try {
       const result = await models.Users
         .find()
+        .skip(req.query.skip)
+        .limit(req.query.limit)
+
+      res.json(result)
+    } catch (error) {
+      res.status(400).send(error)
+    }
+  })
+
+  users.get('/users/:id', async (req, res) => {
+    try {
+      const result = await models.Users
+        .findOne({ _id: req.params.id })
 
       res.json(result)
     } catch (error) {
